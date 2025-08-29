@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+<style>
+body{margin:0;font-family:'Segoe UI',sans-serif;height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(270deg,#ff6a00,#ee0979,#00f260,#0575e6);background-size:800% 800%;animation:gradientBG 15s ease infinite;color:white;}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.card{background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border-radius:20px;padding:40px;max-width:450px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+h2{font-size:2rem;margin-bottom:20px;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+input{width:100%;padding:12px;margin:10px 0;border:none;border-radius:12px;font-size:1rem;outline:none;background:rgba(255,255,255,0.8);}
+button{width:100%;padding:14px;margin-top:20px;border:none;border-radius:30px;font-weight:bold;font-size:1rem;color:white;cursor:pointer;transition:0.3s;background:linear-gradient(45deg,#00c6ff,#0072ff);box-shadow:0 4px 15px rgba(0,0,0,0.3);}
+button:hover{transform:scale(1.05);background:linear-gradient(45deg,#f953c6,#b91d73);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+p{margin-top:15px;} a{color:#fff;font-weight:bold;text-decoration:none;transition:0.3s;} a:hover{color:#ffe259;}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>📝 Registro</h2>
+<form id="registroForm">
+<input type="text" id="nombre" placeholder="Nombre completo" required>
+<input type="email" id="correo" placeholder="Correo Electrónico" required>
+<input type="tel" id="telefono" placeholder="Teléfono" required>
+<input type="password" id="contrasena" placeholder="Contraseña" required>
+<button type="submit">Registrarse</button>
+</form>
+<p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+</div>
+
+<script>
+const form = document.getElementById("registroForm");
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  const nombre = document.getElementById("nombre").value;
+  const correo = document.getElementById("correo").value;
+  const telefono = document.getElementById("telefono").value;
+  const contrasena = document.getElementById("contrasena").value;
+
+  const usuario = {nombre, correo, telefono, contrasena};
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  usuarios.push(usuario);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+
+  window.location.href = "menu.html"; // va al menú principal
+});
+</script>
+</body>
+</html>

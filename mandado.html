@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandado</title>
+<style>
+body {
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(270deg,#ff416c,#ff4b2b,#00c6ff,#0072ff);
+  background-size:800% 800%;
+  animation:gradientBG 15s ease infinite;
+  color:white;
+}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.card{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  padding:40px;
+  max-width:450px;
+  width:90%;
+  text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+}
+h2{margin-bottom:20px;font-size:2rem;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:12px;
+  font-size:1rem;
+  outline:none;
+  background:rgba(255,255,255,0.8);
+}
+button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#00c6ff,#0072ff);
+  color:white;
+  font-weight:bold;
+  font-size:1rem;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+button:hover{
+  transform:scale(1.05);
+  background:linear-gradient(45deg,#f953c6,#b91d73);
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🚴 Crear Mandado</h2>
+<form id="mandadoForm">
+<input type="text" id="cliente" placeholder="Nombre del Cliente" required>
+<input type="text" id="recogida" placeholder="Dirección de Recogida" required>
+<input type="text" id="entrega" placeholder="Dirección de Entrega" required>
+<select id="tipo" required>
+<option value="">Tipo de Mandado</option>
+<option value="Compras">Compras</option>
+<option value="Documentos">Documentos</option>
+<option value="Paquetes">Paquetes</option>
+</select>
+<textarea id="detalles" placeholder="Detalles adicionales"></textarea>
+<button type="submit">Enviar Mandado</button>
+</form>
+</div>
+
+<script>
+document.getElementById("mandadoForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const cliente = document.getElementById("cliente").value;
+  const recogida = document.getElementById("recogida").value;
+  const entrega = document.getElementById("entrega").value;
+  const tipo = document.getElementById("tipo").value;
+  const detalles = document.getElementById("detalles").value;
+  const hora = new Date().toLocaleTimeString();
+
+  const mandado = {cliente, recogida, entrega, tipo, detalles, hora};
+
+  let mandados = JSON.parse(localStorage.getItem("misMandados")) || [];
+  mandados.push(mandado);
+  localStorage.setItem("misMandados", JSON.stringify(mandados));
+
+  alert("Mandado enviado correctamente 🚴‍♂️");
+  this.reset();
+});
+</script>
+</body>
+</html>
+

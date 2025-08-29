@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil</title>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(270deg,#7F00FF,#E100FF,#00C9FF,#92FE9D);
+  background-size:800% 800%;
+  animation:gradientBG 15s ease infinite;
+  color:white;
+}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.card{
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  padding:40px;
+  max-width:450px;
+  width:90%;
+  text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+}
+h2{margin-bottom:20px;font-size:2rem;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+.profile-picture{width:120px;height:120px;border-radius:50%;margin-bottom:20px;border:4px solid white;}
+span{display:block;margin:8px 0;font-size:1.1rem;}
+button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#00c6ff,#0072ff);
+  font-weight:bold;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.05);
+  background:linear-gradient(45deg,#f953c6,#b91d73);
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Mi Perfil</h2>
+<img src="img/OIP.jpeg" alt="Foto de perfil" class="profile-picture">
+<span><strong>Nombre:</strong> <span id="userName"></span></span>
+<span><strong>Email:</strong> <span id="userEmail"></span></span>
+<span><strong>Teléfono:</strong> <span id="userPhone"></span></span>
+<button onclick="cerrarSesion()">Cerrar Sesión</button>
+</div>
+
+<script>
+const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+if(usuario){
+document.getElementById("userName").innerText = usuario.nombre || "Sin nombre";
+  document.getElementById("userEmail").innerText = usuario.correo || "Sin correo";
+  document.getElementById("userPhone").innerText = usuario.telefono || "Sin teléfono";
+} else {
+  // Si no hay usuario activo, redirigir a login
+  window.location.href = "login.html";
+}
+
+function cerrarSesion(){
+  localStorage.removeItem("usuarioActivo");
+  window.location.href = "login.html";
+}
+</script>

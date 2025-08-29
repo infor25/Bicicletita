@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bicicletita - Soporte</title>
+<style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif;}
+body{background:#f2f2f2; color:#333;}
+header{background:#ff6b6b; color:white; padding:20px 40px; text-align:center; font-size:2rem; font-weight:bold; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+nav{display:flex; justify-content:center; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+nav a{padding:15px 25px; text-decoration:none; color:#333; font-weight:bold; transition:0.3s;}
+nav a:hover{background:#ff6b6b; color:white; border-radius:5px;}
+.container{max-width:600px; margin:40px auto; background:#fff; padding:30px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1);}
+h2{text-align:center; margin-bottom:30px; color:#ff6b6b;}
+form{display:flex; flex-direction:column; gap:20px;}
+input, textarea{padding:15px; border-radius:10px; border:1px solid #ccc; font-size:1rem; width:100%;}
+button{padding:15px; background:#ff6b6b; color:white; border:none; font-size:1.2rem; font-weight:bold; border-radius:10px; cursor:pointer; transition:0.3s;}
+button:hover{background:#ff3b3b;}
+footer{text-align:center; padding:20px; margin-top:40px; background:#fff; box-shadow:0 -2px 4px rgba(0,0,0,0.1);}
+@media(max-width:600px){nav{flex-direction:column;} nav a{padding:10px;} .container{margin:20px; padding:20px;}}
+</style>
+</head>
+<body>
+<header>Bicicletita - Soporte</header>
+<nav>
+<a href="bienvenida.html">Inicio</a>
+<a href="postularse.html">Postularse</a>
+<a href="repartidor.html">Repartidor</a>
+<a href="repartidores.html">Repartidores</a>
+<a href="soporte.html">Soporte</a>
+</nav>
+<div class="container">
+<h2>Contáctanos</h2>
+<form>
+<input type="text" placeholder="Nombre completo" required>
+<input type="email" placeholder="Correo electrónico" required>
+<textarea placeholder="Escribe tu consulta o reclamo" rows="5" required></textarea>
+<button type="submit">Enviar</button>
+</form>
+</div>
+<footer>© 2025 Bicicletita. Todos los derechos reservados.</footer>
+</body>
+</html>

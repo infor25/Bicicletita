@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Principal</title>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(270deg,#ff416c,#ff4b2b,#00c6ff,#0072ff);
+  background-size:800% 800%;
+  animation:gradientBG 15s ease infinite;
+  color:white;
+}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.25);
+  width:90%;
+  max-width:400px;
+  text-align:center;
+}
+h1{margin-bottom:30px;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+button{
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  border:none;
+  border-radius:30px;
+  font-weight:bold;
+  font-size:1.1rem;
+  cursor:pointer;
+  color:white;
+  background:linear-gradient(45deg,#00c6ff,#0072ff);
+  transition:0.3s;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+button:hover{
+  transform:scale(1.05);
+  background:linear-gradient(45deg,#f953c6,#b91d73);
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📋 Menú Principal</h1>
+<button onclick="irA('perfil.html')">Perfil</button>
+<button onclick="irA('mandado.html')">Realizar un Mandado</button>
+<button onclick="irA('mis-mandados.html')">Mis Mandados</button>
+<button onclick="irA('postularse.html')">Postularse</button>
+<button onclick="irA('repartidor.html')">Agregar Repartidor</button>
+<button onclick="irA('repartidores.html')">Lista de Repartidores</button>
+<button onclick="cerrarSesion()">Cerrar Sesión</button>
+</div>
+
+<script>
+const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+if(!usuario){
+  window.location.href = "login.html"; // si no hay usuario, redirige
+}
+
+function irA(pagina){
+  window.location.href = pagina;
+}
+
+function cerrarSesion(){
+  localStorage.removeItem("usuarioActivo");
+  window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
